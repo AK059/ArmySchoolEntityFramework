@@ -1,0 +1,48 @@
+﻿@page
+@model ArmySchoolEntityFramework.Pages.Admissions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Admission[0].Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admission[0].Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admission[0].Student)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Admission) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubjectID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AdmissionID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AdmissionID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AdmissionID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
